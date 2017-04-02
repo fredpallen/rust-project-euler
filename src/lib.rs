@@ -5,7 +5,7 @@ use num::BigUint;
 use num::One;
 use num::Zero;
 
-trait SafeToBigUint: ToBigUint {
+pub trait SafeToBigUint: ToBigUint {
     fn safe_to_biguint(&self) -> BigUint {
         self.to_biguint().unwrap()
     }
@@ -18,7 +18,24 @@ impl SafeToBigUint for u32 {}
 impl SafeToBigUint for u64 {}
 impl SafeToBigUint for BigUint {}
 
-fn sum_consecutive_ints_usize(first: usize, count: usize) -> usize {
+/// ```
+/// use project_euler::sum_consecutive_ints_usize;
+///
+/// assert_eq!(sum_consecutive_ints_usize(0, 0), 0);
+/// assert_eq!(sum_consecutive_ints_usize(1, 0), 0);
+/// assert_eq!(sum_consecutive_ints_usize(2, 0), 0);
+/// assert_eq!(sum_consecutive_ints_usize(0, 1), 0);
+/// assert_eq!(sum_consecutive_ints_usize(0, 2), 1);
+/// assert_eq!(sum_consecutive_ints_usize(0, 3), 3);
+/// assert_eq!(sum_consecutive_ints_usize(0, 4), 6);
+/// assert_eq!(sum_consecutive_ints_usize(1, 1), 1);
+/// assert_eq!(sum_consecutive_ints_usize(1, 2), 3);
+/// assert_eq!(sum_consecutive_ints_usize(1, 3), 6);
+/// assert_eq!(sum_consecutive_ints_usize(2, 1), 2);
+/// assert_eq!(sum_consecutive_ints_usize(2, 2), 5);
+/// assert_eq!(sum_consecutive_ints_usize(2, 3), 9);
+/// ```
+pub fn sum_consecutive_ints_usize(first: usize, count: usize) -> usize {
     if count == 0 {return 0;}
 
     // Sum the integers from 1 to count, inclusive.
@@ -29,7 +46,7 @@ fn sum_consecutive_ints_usize(first: usize, count: usize) -> usize {
     to_last - below_first
 }
 
-fn sum_first_ints<T>(count: T) -> BigUint
+pub fn sum_first_ints<T>(count: T) -> BigUint
         where T: SafeToBigUint {
     let _0 = BigUint::zero();
     let _1 = &BigUint::one();
@@ -43,7 +60,7 @@ fn sum_first_ints<T>(count: T) -> BigUint
     }
 }
 
-fn sum_consecutive_ints<T, U>(first: T, count: U) -> BigUint
+pub fn sum_consecutive_ints<T, U>(first: T, count: U) -> BigUint
         where T: SafeToBigUint, U: SafeToBigUint {
     let _0 = BigUint::zero();
     let _1 = &BigUint::one();
@@ -67,10 +84,9 @@ fn sum_consecutive_ints<T, U>(first: T, count: U) -> BigUint
     sum_zero_to_last - sum_below_first
 }
 
-fn main() {
-    println!("Hello, world!");
-    println!(
-        "sum_consecutive_ints(0, 3) = {}", sum_consecutive_ints(0u32, 3u32));
-    println!(
-        "sum_consecutive_ints_usize(0, 3) = {}", sum_consecutive_ints_usize(0usize, 3usize));
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn it_works() {
+    }
 }
