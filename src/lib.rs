@@ -7,6 +7,7 @@ pub mod p0006;
 pub mod p0007;
 pub mod p0008;
 pub mod p0009;
+pub mod p0010;
 
 use std::cmp;
 
@@ -65,4 +66,48 @@ pub fn reverse_digits(n: u64) -> u64 {
         remainder /= 10;
     }
     reversed
+}
+
+/// ```
+/// use project_euler::primes_to;
+///
+/// assert!(primes_to(0).is_empty());
+/// assert!(primes_to(1).is_empty());
+/// assert_eq!(vec![2], primes_to(2));
+/// assert_eq!(vec![2,3], primes_to(3));
+/// assert_eq!(vec![2,3], primes_to(4));
+/// assert_eq!(vec![2,3,5], primes_to(5));
+/// assert_eq!(vec![2,3,5], primes_to(6));
+/// assert_eq!(vec![2,3,5,7], primes_to(7));
+/// assert_eq!(vec![2,3,5,7], primes_to(8));
+/// assert_eq!(vec![2,3,5,7], primes_to(9));
+/// assert_eq!(vec![2,3,5,7], primes_to(10));
+/// assert_eq!(vec![2,3,5,7,11], primes_to(11));
+/// assert_eq!(vec![2,3,5,7,11], primes_to(12));
+/// assert_eq!(vec![2,3,5,7,11,13], primes_to(13));
+/// ```
+pub fn primes_to(n: usize) -> Vec<usize> {
+    if n < 2 {return vec![];}
+    if n < 3 {return vec![2];}
+
+    let mut is_known_composite = vec![false; n + 1];
+    let mut primes = vec![2, 3];
+
+    let mut prime = 3;
+    'main_loop: loop {
+        let mut c = prime * prime;
+        while c <= n {
+            is_known_composite[c] = true;
+            c += 2 * prime;
+        }
+        prime += 2;
+        if prime > n {break 'main_loop; }
+        while is_known_composite[prime] {
+            prime += 2;
+            if prime > n {break 'main_loop;}
+        }
+        primes.push(prime);
+    }
+
+    primes
 }
