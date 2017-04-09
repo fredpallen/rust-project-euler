@@ -1,6 +1,3 @@
-/// ```
-/// assert_eq!(project_euler::p0007::solve(), 104743)
-/// ```
 pub fn solve() -> usize {
     let n = 10001;
 
@@ -26,4 +23,14 @@ pub fn solve() -> usize {
     }
 
     prime
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_solve() {
+        assert_eq!(104743, solve());
+    }
 }

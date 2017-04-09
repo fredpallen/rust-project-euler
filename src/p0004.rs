@@ -1,8 +1,5 @@
 use reverse_digits;
 
-/// ```
-/// assert_eq!(project_euler::p0004::solve(), 906609);
-/// ```
 pub fn solve() -> u64 {
     let mut top = 1000;
     let is_three_digits = |n| n >= 100 && n < 1000;
@@ -14,5 +11,15 @@ pub fn solve() -> u64 {
                 return palindrome;
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_solve() {
+        assert_eq!(906609, solve());
     }
 }

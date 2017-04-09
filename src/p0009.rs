@@ -1,6 +1,3 @@
-/// ```
-/// assert_eq!(project_euler::p0009::solve(), 31875000);
-/// ```
 pub fn solve() -> u64 {
     for m in 1..1001 {
         for n in 1..m {
@@ -13,4 +10,14 @@ pub fn solve() -> u64 {
         }
     }
     0
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_solve() {
+        assert_eq!(31875000, solve());
+    }
 }

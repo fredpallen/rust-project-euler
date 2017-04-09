@@ -18,23 +18,6 @@ impl SafeToBigUint for u32 {}
 impl SafeToBigUint for u64 {}
 impl SafeToBigUint for BigUint {}
 
-/// ```
-/// use project_euler::p0001::sum_consecutive_ints_usize;
-///
-/// assert_eq!(sum_consecutive_ints_usize(0, 0), 0);
-/// assert_eq!(sum_consecutive_ints_usize(1, 0), 0);
-/// assert_eq!(sum_consecutive_ints_usize(2, 0), 0);
-/// assert_eq!(sum_consecutive_ints_usize(0, 1), 0);
-/// assert_eq!(sum_consecutive_ints_usize(0, 2), 1);
-/// assert_eq!(sum_consecutive_ints_usize(0, 3), 3);
-/// assert_eq!(sum_consecutive_ints_usize(0, 4), 6);
-/// assert_eq!(sum_consecutive_ints_usize(1, 1), 1);
-/// assert_eq!(sum_consecutive_ints_usize(1, 2), 3);
-/// assert_eq!(sum_consecutive_ints_usize(1, 3), 6);
-/// assert_eq!(sum_consecutive_ints_usize(2, 1), 2);
-/// assert_eq!(sum_consecutive_ints_usize(2, 2), 5);
-/// assert_eq!(sum_consecutive_ints_usize(2, 3), 9);
-/// ```
 pub fn sum_consecutive_ints_usize(first: usize, count: usize) -> usize {
     if count == 0 {return 0;}
 
@@ -86,7 +69,22 @@ pub fn sum_consecutive_ints<T, U>(first: T, count: U) -> BigUint
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
-    fn it_works() {
+    fn test_sum_consecutive_ints_usize() {
+        assert_eq!(sum_consecutive_ints_usize(0, 0), 0);
+        assert_eq!(sum_consecutive_ints_usize(1, 0), 0);
+        assert_eq!(sum_consecutive_ints_usize(2, 0), 0);
+        assert_eq!(sum_consecutive_ints_usize(0, 1), 0);
+        assert_eq!(sum_consecutive_ints_usize(0, 2), 1);
+        assert_eq!(sum_consecutive_ints_usize(0, 3), 3);
+        assert_eq!(sum_consecutive_ints_usize(0, 4), 6);
+        assert_eq!(sum_consecutive_ints_usize(1, 1), 1);
+        assert_eq!(sum_consecutive_ints_usize(1, 2), 3);
+        assert_eq!(sum_consecutive_ints_usize(1, 3), 6);
+        assert_eq!(sum_consecutive_ints_usize(2, 1), 2);
+        assert_eq!(sum_consecutive_ints_usize(2, 2), 5);
+        assert_eq!(sum_consecutive_ints_usize(2, 3), 9);
     }
 }

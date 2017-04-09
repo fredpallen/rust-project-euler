@@ -1,8 +1,5 @@
 use std::cmp;
 
-/// ```
-/// assert_eq!(project_euler::p0008::solve(), 23514624000);
-/// ```
 pub fn solve() -> usize {
     let n = 13;
     let all_digits = "\
@@ -43,4 +40,14 @@ pub fn solve() -> usize {
     }
 
     max_product
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_solve() {
+        assert_eq!(23514624000, solve());
+    }
 }

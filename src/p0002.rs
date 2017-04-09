@@ -1,8 +1,3 @@
-/// Finds the sum of the even-valued Fibonacci numbers below 4 million.
-///
-/// ```
-/// assert_eq!(project_euler::p0002::solve(), 4613732)
-/// ```
 pub fn solve() -> u64 {
     let mut sum = 0u64;
     let mut a = 1u64;
@@ -14,4 +9,14 @@ pub fn solve() -> u64 {
         b = c;
     }
     sum
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_solve() {
+        assert_eq!(4613732, solve());
+    }
 }

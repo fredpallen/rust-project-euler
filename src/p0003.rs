@@ -1,6 +1,3 @@
-/// ```
-/// assert_eq!(project_euler::p0003::solve(), 6857);
-/// ```
 pub fn solve() -> u64 {
     let mut n = 600851475143u64;
     let mut f = 1u64;
@@ -13,4 +10,14 @@ pub fn solve() -> u64 {
     }
 
     f
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_solve() {
+        assert_eq!(6857, solve());
+    }
 }

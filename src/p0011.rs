@@ -1,8 +1,5 @@
 use std::cmp;
 
-/// ```
-/// assert_eq!(project_euler::p0011::solve(), 70600674);
-/// ```
 pub fn solve() -> usize {
     let grid_string = "
 08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
@@ -75,4 +72,14 @@ pub fn solve() -> usize {
     }
 
     max_product
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_solve() {
+        assert_eq!(70600674, solve());
+    }
 }
