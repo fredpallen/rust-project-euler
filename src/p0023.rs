@@ -1,6 +1,3 @@
-use std::collections::HashSet;
-use std::iter::FromIterator;
-
 fn proper_divisor_sum(n: &usize) -> usize {
     (1..(n / 2) + 1).filter(|d| n % d == 0).sum()
 }
@@ -12,21 +9,19 @@ fn is_abundant(n: &usize) -> bool {
 pub fn solve() -> usize {
     let bound = 28123;
 
-    let abundants: HashSet<usize> =
-        HashSet::from_iter((1..bound + 1).filter(is_abundant));
+    let abundants: Vec<usize> = (1..(bound + 1)).filter(is_abundant).collect();
 
-    let mut sum = 0;
-    'candidates: for n in 1..(bound + 1) {
-        for a in &abundants {
-            if (n > *a) && abundants.contains(&(n - *a)) {
-                // This n is a sum of two abundants.
-                continue 'candidates;
+    let mut is_sum = vec![false; bound + 1];
+    for a in &abundants {
+        for b in &abundants {
+            if (b > a) || (a + b > bound) {
+                break;
             }
+            is_sum[a + b] = true;
         }
-        sum += n;
     }
 
-    sum
+    (1..(bound + 1)).filter(|n| !is_sum[*n]).sum()
 }
 
 #[cfg(test)]
