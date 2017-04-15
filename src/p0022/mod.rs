@@ -1,19 +1,10 @@
-use std::fs;
-use std::io::Read;
-
 pub fn solve() -> usize {
-    let contents = {
-        let mut file = fs::File::open("src/p0022/p022_names.txt").unwrap();
-        let mut contents = String::new();
-        file.read_to_string(&mut contents).unwrap();
-        contents
-    };
-
     let names = {
         let mut names =
-            contents.split(',')
-            .map(|s| s.replace('"', ""))
-            .collect::<Vec<String>>();
+            include_str!("p022_names.txt")
+                .split(',')
+                .map(|s| s.replace('"', ""))
+                .collect::<Vec<String>>();
         names.sort();
         names
     };
