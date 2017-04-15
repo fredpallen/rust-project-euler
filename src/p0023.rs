@@ -1,5 +1,15 @@
 fn proper_divisor_sum(n: &usize) -> usize {
-    (1..(n / 2) + 1).filter(|d| n % d == 0).sum()
+    let mut sum = 1;
+    for k in (2..).take_while(|k| k * k <= *n) {
+        if n % k == 0 {
+            sum += k;
+            let q = n / k;
+            if q != k {
+                sum += q;
+            }
+        }
+    }
+    sum
 }
 
 fn is_abundant(n: &usize) -> bool {
