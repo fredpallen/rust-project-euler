@@ -21,6 +21,7 @@ pub mod p0020;
 pub mod p0021;
 pub mod p0022;
 pub mod p0023;
+pub mod p0024;
 
 use std::cmp;
 
