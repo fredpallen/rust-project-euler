@@ -1,6 +1,6 @@
 fn divisor_count(n: usize) -> usize {
     let mut count = 2;
-    for d in 2..(n/2 + 1) {
+    for d in 2..(n / 2 + 1) {
         if n % d == 0 {
             count += 1;
         }
@@ -23,7 +23,9 @@ pub fn solve() -> usize {
     let mut n = 0;
     loop {
         n += 1;
-        if triangle_divisor_count(n) > 500 {break;}
+        if triangle_divisor_count(n) > 500 {
+            break;
+        }
     }
     (n * (n + 1)) / 2
 }

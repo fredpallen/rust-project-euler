@@ -4,7 +4,9 @@ pub fn solve() -> usize {
     let mut visited = vec![false; 101];
     let mut sum = 0;
     for a in 2..101 {
-        if visited[a] {continue;}
+        if visited[a] {
+            continue;
+        }
         let mut uniques: HashSet<usize> = HashSet::new();
         let mut power = 1;
         let mut value = a;

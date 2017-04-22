@@ -14,7 +14,12 @@ pub fn solve() -> usize {
         let rest = lengths[r];
         lengths.push(length + rest);
     }
-    lengths.iter().enumerate().max_by_key(|pair| pair.1).unwrap().0
+    lengths
+        .iter()
+        .enumerate()
+        .max_by_key(|pair| pair.1)
+        .unwrap()
+        .0
 }
 
 #[cfg(test)]

@@ -1,5 +1,7 @@
 fn is_prime(n: i32) -> bool {
-    if n < 2 {return false;}
+    if n < 2 {
+        return false;
+    }
     for d in (2..).take_while(|d| d * d < n) {
         if n % d == 0 {
             return false;
@@ -14,7 +16,9 @@ pub fn solve() -> i32 {
 
     // b must be prime to get a prime for n=0.
     for b in 2..1001 {
-        if !is_prime(b) {continue;}
+        if !is_prime(b) {
+            continue;
+        }
         for a in -999..1000 {
             for n in 1.. {
                 if !is_prime((n * n) + (a * n) + b) {

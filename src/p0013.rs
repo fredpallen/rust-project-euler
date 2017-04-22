@@ -102,11 +102,11 @@ pub fn solve() -> String {
 53503534226472524250874054075591789781264330331690
 ";
 
-    let sum: f64 =
-        input.lines()
-             .filter(|s| !s.is_empty())
-             .map(|s| s.parse::<f64>().unwrap())
-             .sum();
+    let sum: f64 = input
+        .lines()
+        .filter(|s| !s.is_empty())
+        .map(|s| s.parse::<f64>().unwrap())
+        .sum();
     let mut result = sum.to_string();
     result.truncate(10);
     result

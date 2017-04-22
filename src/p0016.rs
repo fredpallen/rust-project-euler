@@ -2,20 +2,21 @@ use std::cmp;
 use std::iter;
 
 fn multiply_and_add_shifted(
-        output: &mut Vec<usize>,
-        input: &Vec<usize>,
-        factor: usize,
-        shift: usize) {
+    output: &mut Vec<usize>,
+    input: &Vec<usize>,
+    factor: usize,
+    shift: usize,
+) {
     let starting_output_length = output.len();
     if shift > starting_output_length {
         output.extend(iter::repeat(0).take(shift - starting_output_length));
     }
     let mut carry = 0;
-    let overlap_count =
-        if starting_output_length < shift {0}
-        else {
-            cmp::min(starting_output_length - shift, input.len())
-        };
+    let overlap_count = if starting_output_length < shift {
+        0
+    } else {
+        cmp::min(starting_output_length - shift, input.len())
+    };
     for i in 0..overlap_count {
         let value = (factor * input[i]) + output[i + shift] + carry;
         output[i + shift] = value % 10;
@@ -32,7 +33,9 @@ fn multiply_and_add_shifted(
             let value = output[i] + carry;
             output[i] = value % 10;
             carry = value / 10;
-            if carry == 0 {break;}
+            if carry == 0 {
+                break;
+            }
         }
     }
     while carry != 0 {

@@ -3,7 +3,9 @@ pub fn solve() -> u64 {
     let mut a = 1u64;
     let mut b = 1u64;
     while b < 4000000 {
-        if b % 2 == 0 {sum += b;}
+        if b % 2 == 0 {
+            sum += b;
+        }
         let c = a + b;
         a = b;
         b = c;

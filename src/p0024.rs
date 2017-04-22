@@ -18,7 +18,7 @@ pub fn solve() -> usize {
     let mut digits: Vec<usize> = (0..10).collect();
     let mut permutation = vec![];
     for s in selections {
-         permutation.push(digits.remove(s));
+        permutation.push(digits.remove(s));
     }
     permutation.extend(digits);
     let mut result = 0;

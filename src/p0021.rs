@@ -3,11 +3,14 @@ fn proper_divisor_sum(n: usize) -> usize {
 }
 
 pub fn solve() -> usize {
-    (1..10000).filter(
-        |n| {
-            let s = proper_divisor_sum(*n);
-            (s < 10000) && (s != *n) && (proper_divisor_sum(s) == *n)
-        }).sum()
+    (1..10000)
+        .filter(
+            |n| {
+                let s = proper_divisor_sum(*n);
+                (s < 10000) && (s != *n) && (proper_divisor_sum(s) == *n)
+            },
+        )
+        .sum()
 }
 
 #[cfg(test)]

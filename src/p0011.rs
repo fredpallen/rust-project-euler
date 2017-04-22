@@ -27,24 +27,25 @@ pub fn solve() -> usize {
     let grid = {
         let not_empty = |s: &&str| !s.is_empty();
         let str_to_usize = |s: &str| s.parse::<usize>().unwrap();
-        let line_to_usize_vec =
-            |line: &str| line.split_whitespace()
-                             .filter(&not_empty)
-                             .map(&str_to_usize)
-                             .collect::<Vec<usize>>();
+        let line_to_usize_vec = |line: &str| {
+            line.split_whitespace()
+                .filter(&not_empty)
+                .map(&str_to_usize)
+                .collect::<Vec<usize>>()
+        };
 
-        grid_string.lines()
-                   .filter(&not_empty)
-                   .map(&line_to_usize_vec)
-                   .collect::<Vec<Vec<usize>>>()
+        grid_string
+            .lines()
+            .filter(&not_empty)
+            .map(&line_to_usize_vec)
+            .collect::<Vec<Vec<usize>>>()
     };
 
     let row_count = grid.len();
     let col_count = grid[0].len();
     let run_count = 4;
 
-    let get_run_product =
-        |f: &Fn(usize) -> usize| (0..run_count).map(f).product();
+    let get_run_product = |f: &Fn(usize) -> usize| (0..run_count).map(f).product();
     let mut max_product = 0;
     for i in 0..row_count {
         for j in 0..(col_count - run_count) {

@@ -19,8 +19,12 @@ fn month_days(month: usize, year: usize) -> usize {
         31, // October
         30, // November
         31, // December
-    ]; 
-    if (month != 2) || !is_leap_year(year) {days[month]} else {29}
+    ];
+    if (month != 2) || !is_leap_year(year) {
+        days[month]
+    } else {
+        29
+    }
 }
 
 pub fn solve() -> usize {
@@ -37,7 +41,9 @@ pub fn solve() -> usize {
     let mut count = 0;
     for year in 1901..2001 {
         for month in 1..13 {
-            if weekday == 0 {count += 1;}
+            if weekday == 0 {
+                count += 1;
+            }
             weekday += month_days(month, year);
             weekday %= 7;
         }

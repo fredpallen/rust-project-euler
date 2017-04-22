@@ -32,11 +32,15 @@ pub fn solve() -> usize {
     loop {
         index += 1;
         add(&mut b, &a);
-        if b.len() >= 1000 {break;}
+        if b.len() >= 1000 {
+            break;
+        }
 
         index += 1;
         add(&mut a, &b);
-        if a.len() >= 1000 {break;}
+        if a.len() >= 1000 {
+            break;
+        }
     }
 
     index

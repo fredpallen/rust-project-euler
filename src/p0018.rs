@@ -2,13 +2,13 @@ use std::cmp;
 use std::iter;
 
 pub fn solve() -> usize {
-    let str_to_usize = |s: &str| -> usize {
-        s.parse::<usize>().unwrap()
-    };
+    let str_to_usize = |s: &str| -> usize { s.parse::<usize>().unwrap() };
 
     // Pad a zero at the beginning of a row.
     let row_str_to_zero_padded = |s: &str| -> Vec<usize> {
-        iter::once(0).chain(s.split_whitespace().map(&str_to_usize)).collect()
+        iter::once(0)
+            .chain(s.split_whitespace().map(&str_to_usize))
+            .collect()
     };
 
     let triangle: Vec<Vec<usize>> = "
@@ -38,7 +38,7 @@ pub fn solve() -> usize {
         let row_length = row_index + 1;
         for column_index in (0..row_length).rev() {
             max_sum[column_index + 1] = row[column_index + 1] +
-                cmp::max(max_sum[column_index], max_sum[column_index + 1]);
+                                        cmp::max(max_sum[column_index], max_sum[column_index + 1]);
         }
     }
     *max_sum.iter().max().unwrap()

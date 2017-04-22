@@ -31,7 +31,9 @@ pub fn solve() -> usize {
         let digits: Vec<usize> = run.chars().map(&to_int).collect();
         let mut product: usize = digits.iter().take(n).product();
         max_product = cmp::max(product, max_product);
-        if digits.len() < n {continue;}
+        if digits.len() < n {
+            continue;
+        }
         for removed in 0..(digits.len() - n) {
             product /= digits[removed];
             product *= digits[removed + n];

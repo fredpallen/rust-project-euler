@@ -19,18 +19,21 @@ impl SafeToBigUint for u64 {}
 impl SafeToBigUint for BigUint {}
 
 pub fn sum_consecutive_ints_usize(first: usize, count: usize) -> usize {
-    if count == 0 {return 0;}
+    if count == 0 {
+        return 0;
+    }
 
     // Sum the integers from 1 to count, inclusive.
     let sum_to = |count| count * (count + 1) / 2;
 
-    let below_first = if first == 0 {0} else {sum_to(first - 1)};
+    let below_first = if first == 0 { 0 } else { sum_to(first - 1) };
     let to_last = sum_to(first + count - 1);
     to_last - below_first
 }
 
 pub fn sum_first_ints<T>(count: T) -> BigUint
-        where T: SafeToBigUint {
+    where T: SafeToBigUint
+{
     let _0 = BigUint::zero();
     let _1 = &BigUint::one();
     let _2 = &BigUint::from(2u32);
@@ -44,7 +47,9 @@ pub fn sum_first_ints<T>(count: T) -> BigUint
 }
 
 pub fn sum_consecutive_ints<T, U>(first: T, count: U) -> BigUint
-        where T: SafeToBigUint, U: SafeToBigUint {
+    where T: SafeToBigUint,
+          U: SafeToBigUint
+{
     let _0 = BigUint::zero();
     let _1 = &BigUint::one();
 
@@ -55,12 +60,11 @@ pub fn sum_consecutive_ints<T, U>(first: T, count: U) -> BigUint
         return _0;
     }
 
-    let sum_below_first =
-        if *first == _0 {
-            _0
-        } else {
-            sum_first_ints(first - _1)
-        };
+    let sum_below_first = if *first == _0 {
+        _0
+    } else {
+        sum_first_ints(first - _1)
+    };
 
     let sum_zero_to_last = sum_first_ints(first + count - _1);
 
